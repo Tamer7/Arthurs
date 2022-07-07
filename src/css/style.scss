@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=fallback');
+
+@tailwind base;
+@tailwind components;
+
+// Additional styles
+@import 'additional-styles/utility-patterns.scss';
+@import 'additional-styles/range-slider.scss';
+@import 'additional-styles/toggle-switch.scss';
+@import 'additional-styles/theme.scss';
+
+@tailwind utilities;
+
+// Additional Tailwind directives: https://tailwindcss.com/docs/functions-and-directives/#responsive
+@layer utilities {
+    .rtl {
+        direction: rtl;
+    }
+}
+
+// See Alpine.js: https://github.com/alpinejs/alpine#x-cloak
+[x-cloak] {
+    display: none;
+}
+
+// AOS styles
+$aos-distance: 10px;
+@import 'node_modules/aos/src/sass/aos.scss';
+
+
+.card1 {
+    z-index:10;
+    left: -50%;
+    transition: all 0.2s ease-out 0.05s;
+}
+.card2 {
+    z-index:9;
+    top: 10%;
+    transition: all 0.2s ease-out 0.05s;
+}
+.card3 {
+    z-index:8;
+    left: 60%;
+    top: 20%;
+    transition: all 0.2s ease-out 0.05s;
+}
+
+.start .card {
+    opacity:1;
+    transform: rotateZ(0deg);
+    -webkit-transform: rotateZ(0deg);
+    -moz-transform: rotateZ(0deg);
+}
+
+.card {
+    position:absolute;
+    border-radius:2em;
+    width:28em;
+    max-width:28em;
+    -webkit-backface-visibility: hidden;
+}
+
+.card a {
+    margin:0em -2em;
+    display:block;
+    width:120%;
+    max-width:24em;
+    position:relative;
+    line-height:1em;
+}
+
+.card a:after {
+    content: "";
+    position:absolute;
+    left:0;
+    right:0;
+    top:0px;
+    bottom:1px;
+    border-bottom:1px solid rgba(0,0,0,0.35);
+    border-top:1px solid rgba(0,0,0,0.15);
+}
+
+.card p {
+    line-height:1.75em;
+    margin-bottom:0;
+    margin-top: 2em;
+}
+
+.card-container:hover,
+.card-container.hover {
+    .card {
+        opacity:0.95;
+        transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        &:hover,
+        &.hover {
+            opacity:1;   
+            z-index:11;
+                transform: scale(1);
+        -webkit-transform: scale(1);
+        }
+    }
+    
+}
+
+
+.navbar_links 
+{
+    height: 100%;
+    position: relative;
+}
+
+.navbar_links:after
+{
+    content: '';
+    position: absolute;
+    border-radius: 20%;
+    width: 80%;
+    transform: scaleX(0);
+    height: 5px;
+    top: 90%;
+    left: 6px;
+    right: 0;
+    background-color: #0CB9FB;
+    transform-origin: center;
+    transition: transform 0.25s ease-out;
+}
+
+.navbar_links:hover:after
+{
+    transform: scaleX(0.3);
+    transform-origin: center;
+}
+
+@media (max-width: 425px) {
+    .card {
+        max-width: 20em;
+    }
+    .card1 {
+        left: 0;
+    }
+    .card2 {
+        top: 20%;
+    }
+    .card3 {
+        top: 40%;
+        left: 0;
+    }
+}
+
